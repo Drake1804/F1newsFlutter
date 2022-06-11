@@ -1,4 +1,4 @@
-import 'package:f1news/utils/Constants.dart';
+import 'package:f1news/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'article.dart';

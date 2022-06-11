@@ -1,5 +1,3 @@
-
-
 const String appName = "F1 News";
 const double newsFeedImageHeight = 200;
 const String emptyString = "";

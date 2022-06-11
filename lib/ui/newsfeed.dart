@@ -1,7 +1,7 @@
 import 'package:f1news/data/news.dart';
 import 'package:f1news/data/repository.dart';
 import 'package:f1news/ui/widgets.dart';
-import 'package:f1news/utils/Constants.dart';
+import 'package:f1news/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class NewsFeed extends StatefulWidget {
