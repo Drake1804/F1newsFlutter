@@ -13,19 +13,9 @@ class NewsFeed extends StatefulWidget {
 
 class NewsFeedState extends State<NewsFeed> {
   var newsList = [];
-  bool loading = false;
-
-  void getNews() async {
-    NewsRepository repository = NewsRepository();
-    newsList = await repository.getNewsRemote();
-    setState(() {
-      loading = false;
-    });
-  }
 
   @override
   void initState() {
-    loading = true;
     super.initState();
     getNews();
   }
@@ -33,25 +23,40 @@ class NewsFeedState extends State<NewsFeed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const F1NewsAppBar(appName),
-      body: SafeArea(
-          child: loading
-              ? const Center(child: CircularProgressIndicator())
-              : SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: margin_16),
-                        height: MediaQuery.of(context).size.height,
-                        child: getListView(),
-                      )
-                    ],
-                  ),
-                )),
+        appBar: const F1NewsAppBar(appName), body: SafeArea(child: getBody()));
+  }
+
+  void getNews() async {
+    NewsRepository repository = NewsRepository();
+    List<News> news = await repository.getNewsRemote();
+    setState(() {
+      newsList = news;
+    });
+  }
+
+  Widget getBody() {
+    if (newsList.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return getListView();
+    }
+  }
+
+  SingleChildScrollView getListView() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: margin_16),
+            height: MediaQuery.of(context).size.height,
+            child: buildListView(),
+          )
+        ],
+      ),
     );
   }
 
-  ListView getListView() {
+  ListView buildListView() {
     return ListView.builder(
         itemCount: newsList.length,
         shrinkWrap: true,
