@@ -17,5 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 TODO
 - Pull to refresh
+- Empty state
 - News sharing
 - News tile redesign

@@ -4,6 +4,8 @@ import 'package:f1news/ui/widgets.dart';
 import 'package:f1news/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'news_tile.dart';
+
 class NewsFeed extends StatefulWidget {
   const NewsFeed({Key? key}) : super(key: key);
 
@@ -31,6 +33,7 @@ class NewsFeedState extends State<NewsFeed> {
     List<News> news = await repository.getNewsRemote();
     setState(() {
       newsList = news;
+      getBody();
     });
   }
 
