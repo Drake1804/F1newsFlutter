@@ -2,7 +2,7 @@ const String appName = "F1 News";
 const double newsFeedImageHeight = 200;
 const String emptyString = "";
 
-const String baseUrl = "http://0.0.0.0:8080/";
+const String baseUrl = "https://f1mp-gedq4cet7q-ue.a.run.app/";
 const String newsFeedRouteUrl = "newsFeed";
 
 const double margin_2 = 2;
