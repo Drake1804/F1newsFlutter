@@ -16,7 +16,8 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 TODO
-- Pull to refresh
-- Empty state
+- Toolbar title length fix
 - News sharing
 - News tile redesign
+- Empty state
+- Pagination
