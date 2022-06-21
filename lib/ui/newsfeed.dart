@@ -50,7 +50,7 @@ class NewsFeedState extends State<NewsFeed> {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: margin_16),
+            padding: const EdgeInsets.only(top: margin_4, left: margin_8, right: margin_8),
             height: MediaQuery.of(context).size.height,
             child: buildListView(),
           )
