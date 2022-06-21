@@ -1,5 +1,6 @@
 import 'package:f1news/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'article.dart';
 
@@ -24,38 +25,46 @@ class NewsTile extends StatelessWidget {
       },
       child: Card(
           clipBehavior: Clip.antiAlias,
-          margin: const EdgeInsets.only(bottom: margin_4, top: margin_4),
-          child: Container(
-            margin: const EdgeInsets.only(left: margin_8, right: margin_8),
-            child: Column(
-              children: [
-                const SizedBox(height: margin_2),
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(newsFeedCornerRadius),
-                    child: Image.network(
-                      imageUrl,
-                      height: newsFeedImageHeight,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    )),
-                const SizedBox(height: margin_2),
-                Text(
+          elevation: 4,
+          child: Column(
+            children: [
+              ClipRRect(
+                  child: Image.network(
+                imageUrl,
+                height: newsFeedImageHeight,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              )),
+              const SizedBox(height: margin_8),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: margin_16, right: margin_8),
+                child: Text(
                   title.trim(),
                   maxLines: descriptionMaxLines,
-                  softWrap: true,
-                  style: const TextStyle(
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.robotoSlab(
                       color: Colors.black87,
                       fontSize: fontTitleSize,
                       fontWeight: FontWeight.w500),
                 ),
-                const SizedBox(height: margin_4),
-                Text(description.trim(),
+              ),
+              const SizedBox(height: margin_4),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: margin_16, right: margin_8),
+                child: Text(description.trim(),
                     maxLines: descriptionMaxLines,
-                    style: const TextStyle(
-                        color: Colors.black54, fontSize: fontDescriptionSize)),
-                const SizedBox(height: margin_8)
-              ],
-            ),
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.robotoCondensed(
+                        color: Colors.black54,
+                        fontSize: fontDescriptionSize,
+                        fontWeight: FontWeight.w400)),
+              ),
+              const SizedBox(height: margin_16)
+            ],
           )),
     );
   }

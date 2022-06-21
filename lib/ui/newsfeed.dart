@@ -50,7 +50,7 @@ class NewsFeedState extends State<NewsFeed> {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: margin_16),
+            padding: const EdgeInsets.only(top: margin_4, left: margin_8, right: margin_8),
             height: MediaQuery.of(context).size.height,
             child: buildListView(),
           )
@@ -59,14 +59,17 @@ class NewsFeedState extends State<NewsFeed> {
     );
   }
 
-  ListView buildListView() {
-    return ListView.builder(
-        itemCount: newsList.length,
-        shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
-        itemBuilder: (context, index) {
-          return getNewsTile(newsList[index]);
-        });
+  RefreshIndicator buildListView() {
+    return RefreshIndicator(
+      onRefresh: onRefresh,
+      child: ListView.builder(
+          itemCount: newsList.length,
+          shrinkWrap: true,
+          physics: const ClampingScrollPhysics(),
+          itemBuilder: (context, index) {
+            return getNewsTile(newsList[index]);
+          }),
+    );
   }
 
   NewsTile getNewsTile(News newsItem) {
@@ -76,5 +79,15 @@ class NewsFeedState extends State<NewsFeed> {
         imageUrl: newsItem.image,
         pubDate: newsItem.pubDate,
         link: newsItem.link);
+  }
+
+  Future<void> onRefresh() {
+    return Future(() => {
+      setState(() {
+        newsList.clear();
+        getBody();
+        getNews();
+      })
+    });
   }
 }

@@ -16,8 +16,8 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 TODO
-- News tile redesign
+- Toolbar title length fix
 - Toolbar redesign
-- News toolbar width fix
 - News sharing
 - Empty state
+- Pagination
