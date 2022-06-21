@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 TODO
 - Toolbar title length fix
+- Toolbar redesign
 - News sharing
-- News tile redesign
 - Empty state
 - Pagination
